@@ -22,16 +22,12 @@ Pastikan Anda telah menginstal Node.js dan npm di sistem Anda.
 2. Instal semua dependensi yang diperlukan menggunakan npm atau Yarn:
    ```bash
   npm install
-  # atau
-  yarn
   
-
 3. Masuk ke direktori
   - cd server
-   Jalankan Express
-  ```bash
-  npx nodemon App.js
-  ```
+     ```bash
+     npx nodemon App.js
+     ```
 
   - cd client
     ```bash

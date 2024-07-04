@@ -27,7 +27,7 @@ function App() {
     };
 
     return (
-        <div className="App p-4">
+        <div className="App bg-marble-texture bg-cover bg-no-repeat bg-fixed min-h-screen flex flex-col items-center justify-center p-4">
             <h1 className="text-3xl font-bold text-center mb-4">Flickr Feed Viewer</h1>
             <form onSubmit={handleSearch} className="flex justify-center mb-6">
                 <input
@@ -54,3 +54,4 @@ function App() {
 }
 
 export default App;
+

@@ -5,6 +5,8 @@ import './index.css';
 function App() {
     const [photos, setPhotos] = useState([]);
     const [search, setSearch] = useState('');
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [selectedPhoto, setSelectedPhoto] = useState(null);
 
     useEffect(() => {
         fetchPhotos();
@@ -26,8 +28,18 @@ function App() {
         fetchPhotos(search);
     };
 
+    const openModal = (photo) => {
+        setSelectedPhoto(photo);
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+        setSelectedPhoto(null);
+    };
+
     return (
-        <div className="App bg-marble-texture bg-cover bg-no-repeat bg-fixed min-h-screen flex flex-col items-center justify-center p-4">
+        <div className="App p-4">
             <h1 className="text-3xl font-bold text-center mb-4">Flickr Feed Viewer</h1>
             <form onSubmit={handleSearch} className="flex justify-center mb-6">
                 <input
@@ -43,15 +55,30 @@ function App() {
             </form>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {photos.map((photo) => (
-                    <div key={photo.link} className="photo-item border border-gray-200 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-                        <img src={photo.media.m} alt={photo.title} className="w-full h-auto" />
+                    <div
+                        key={photo.link}
+                        className="photo-item border border-gray-200 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer"
+                        onClick={() => openModal(photo)}
+                    >
+                        <img src={photo.media.m} alt={photo.title} className="w-full h-48 object-cover" />
                         <p className="p-2 text-sm text-center text-gray-800">{photo.title}</p>
                     </div>
                 ))}
             </div>
+            {selectedPhoto && (
+                <div className={`fixed inset-0 flex items-center justify-center z-50 ${modalIsOpen ? '' : 'hidden'}`}>
+                    <div className="fixed inset-0 bg-black opacity-50" onClick={closeModal}></div>
+                    <div className="bg-white p-4 rounded-lg shadow-lg z-10 max-w-md w-full mx-2">
+                        <img src={selectedPhoto.media.m} alt={selectedPhoto.title} className="w-full h-auto mb-4" />
+                        <p className="text-center text-gray-800">{selectedPhoto.title}</p>
+                        <button onClick={closeModal} className="mt-4 p-2 bg-red-500 text-white rounded hover:bg-red-700">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
 
 export default App;
-

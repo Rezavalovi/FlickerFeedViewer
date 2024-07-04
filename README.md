@@ -19,9 +19,10 @@ Pastikan Anda telah menginstal Node.js dan npm di sistem Anda.
    ```bash
    git clone https://github.com/Rezavalovi/FlickerFeedViewer.git
    
-2. Instal semua dependensi yang diperlukan menggunakan npm atau Yarn:
-   ```bash
-  npm install
+2. Instal semua dependensi yang diperlukan menggunakan npm:
+   
+    ```bash
+   npm install
   
 3. Masuk ke direktori
   - cd server

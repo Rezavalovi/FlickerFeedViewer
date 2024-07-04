@@ -1,7 +1,6 @@
-// src/App.js
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.css'; 
+import './index.css'; 
 
 function App() {
     const [photos, setPhotos] = useState([]);
@@ -46,7 +45,7 @@ function App() {
                 {photos.map((photo) => (
                     <div key={photo.link} className="photo-item border border-gray-200 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
                         <img src={photo.media.m} alt={photo.title} className="w-full h-auto" />
-                        <p className="p-2 text-sm text-gray-800">{photo.title}</p>
+                        <p className="p-2 text-sm text-center text-gray-800">{photo.title}</p>
                     </div>
                 ))}
             </div>

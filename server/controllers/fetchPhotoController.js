@@ -19,7 +19,7 @@ class PhotoController {
           },
           headers: {
             "Content-Type": "application/json",
-            "User-Agent": "YourAppName/1.0",
+            "User-Agent": "Flickr Feed App",
           },
         },
       );
